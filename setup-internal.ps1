@@ -9,6 +9,7 @@ $VMS_SUBNET = "vms"
 $ACA_SUBNET_NSG = "nsg-aca"
 $VMS_SUBNET_NSG = "vm-nsg"
 $VM = "webserver"
+$VM_USERNAME = "ryan"
 $VM_IP = "vm-ip"
 $VM_NIC = "vm-nic"
 
@@ -30,7 +31,7 @@ az network vnet subnet update --vnet-name $VNET -n $VMS_SUBNET -g $GROUP --netwo
 # create the VM (jumpbox) and IP
 $VM_IP_ADDRESS = az network public-ip create -n $VM_IP -g $GROUP --allocation-method Static --query publicIp.ipAddress -o tsv
 az network nic create -g $GROUP -n $VM_NIC --vnet-name $VNET --subnet $VM_SUBNET_ID --public-ip-address $VM_IP
-az vm create -n $VM -g $GROUP --nics $VM_NIC --image Ubuntu2204 --authentication-type Password --admin-username ryan
+az vm create -n $VM -g $GROUP --nics $VM_NIC --image Ubuntu2204 --authentication-type Password --admin-username $VM_USERNAME
 
 # create the ACA environment
 az containerapp env create -n $CONTAINER_ENV -g $GROUP -l $REGION `
@@ -78,5 +79,5 @@ az network private-dns record-set a add-record -g $GROUP `
     --zone-name $ENVIRONMENT_DEFAULT_DOMAIN
 
 # dumps
-"SSH into VM: ssh ryan@$VM_IP_ADDRESS"
+"SSH into VM: ssh $VM_USERNAME@$VM_IP_ADDRESS"
 "On VM: curl https://$WEB_FQDN"
