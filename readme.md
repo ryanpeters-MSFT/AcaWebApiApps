@@ -7,7 +7,7 @@ This example deploys a web and API application into an Azure Container Apps envi
 There are two examples available:
 
 - **External** - Deploys a web and API application where the web application is publically accessible and the API is internal from only within the environment.
-- **Internal** - Deploys a web and API application where the web application is publically accessible and the API is internal from only within the environment.
+- **Internal** - Deploys a web and API application where the web application is accessible from withn the VNET (accessible using the VM) and the API is internal from only within the environment.
 
 ## Notes/Observations
 - This example creates a private DNS zone, which is required for the VM to resolve the load balancer ingress IP for the container app environment
