@@ -1,4 +1,4 @@
-$GROUP = "rg-aca-apps"
+$GROUP = "rg-aca-apps-internal"
 $REGION = "eastus2"
 $CONTAINER_ENV = "apps"
 $CONTAINER_NAME_WEB = "web"
