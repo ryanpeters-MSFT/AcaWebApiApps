@@ -40,6 +40,7 @@ az containerapp env create -n $CONTAINER_ENV -g $GROUP -l $REGION `
 
 # create tha ACA api app
 az containerapp create -n $CONTAINER_NAME_API -g $GROUP `
+    --min-replicas 1 `
     --environment $CONTAINER_ENV `
     --image binarydad/webapi `
     --target-port 80 `
