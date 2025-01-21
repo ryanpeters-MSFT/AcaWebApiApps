@@ -51,6 +51,7 @@ $API_FQDN = az containerapp show -n $CONTAINER_NAME_API -g $GROUP --query "prope
 
 # create tha ACA web app
 az containerapp create -n $CONTAINER_NAME_WEB -g $GROUP `
+    --min-replicas 1 `
     --environment $CONTAINER_ENV `
     --image binarydad/website `
     --target-port 80 `
