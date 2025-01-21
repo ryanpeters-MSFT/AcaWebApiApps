@@ -72,9 +72,9 @@ az network private-dns link vnet create -n "$($VNET)-link" -g $GROUP `
     --zone-name $ENVIRONMENT_DEFAULT_DOMAIN `
     -e true
 
-# add * subdomain to point to static IP of load balancer
+# add "web" subdomain to point to static IP of load balancer
 az network private-dns record-set a add-record -g $GROUP `
-    --record-set-name "*" `
+    --record-set-name "web" `
     --ipv4-address $ENVIRONMENT_STATIC_IP `
     --zone-name $ENVIRONMENT_DEFAULT_DOMAIN
 
